@@ -23,8 +23,6 @@
 		<appengine.app.version>1</appengine.app.version>
 		<appengine.target.version>1.9.50</appengine.target.version>
 		<appengine-maven-plugin-version>1.0.0</appengine-maven-plugin-version>
-		<appengine.sdk.version>1.9.48</appengine.sdk.version>
-		<gcloud.plugin.version>124</gcloud.plugin.version>
 	</properties>
 
 
@@ -36,6 +34,22 @@
 				<configuration>
 					<source>${java.version}</source>
 					<target>${java.version}</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.3</version>
+				<configuration>
+					<archiveClasses>true</archiveClasses>
+					<webResources>
+						<!-- in order to interpolate version from pom into appengine-web.xml -->
+						<resource>
+							<directory>${basedir}/src/main/webapp/WEB-INF</directory>
+							<filtering>true</filtering>
+							<targetPath>WEB-INF</targetPath>
+						</resource>
+					</webResources>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -82,6 +96,8 @@
 			<artifactId>spring-ws-core</artifactId>
 			<version>2.1.4.RELEASE</version>
 		</dependency>
+
+		<!-- Compile/runtime dependencies -->
 		<dependency>
 			<groupId>com.google.appengine</groupId>
 			<artifactId>appengine-api-1.0-sdk</artifactId>
