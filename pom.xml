@@ -23,6 +23,8 @@
 		<appengine.app.version>1</appengine.app.version>
 		<appengine.target.version>1.9.50</appengine.target.version>
 		<appengine-maven-plugin-version>1.0.0</appengine-maven-plugin-version>
+		<appengine.sdk.version>1.9.42</appengine.sdk.version>
+		<gcloud.plugin.version>124</gcloud.plugin.version>
 	</properties>
 
 
